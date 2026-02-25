@@ -1,0 +1,15 @@
+<%= simple_form_for(restaurant) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :category, as: :select, collection: %w[chinese italian japanese french belgian american indian], prompt: "Select category" %>
+
+  <%= f.button :submit %>
+
+  <%= simple_form_for([review.restaurant, review]) do |f| %>
+  <%= f.input :content, as: :text %>
+  <%= f.input :rating, as: :integer, input_html: { min: 0, max: 5 } %>
+
+  <%= f.button :submit, "Add Review" %>
+<% end %>
+
+<% end %>
